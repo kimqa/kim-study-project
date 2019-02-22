@@ -1,4 +1,4 @@
-package kim-study-project;
+package kimstudyproject;
 
 /**
  * Hello world!
