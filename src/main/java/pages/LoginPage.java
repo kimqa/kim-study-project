@@ -17,6 +17,10 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//div[@class='btn-box']//button[@type ='submit']")
     private WebElement loginButton;
 
+    public void openLoginPage() {
+        actionsWithElements.openPage("https://www.ssls.com/authorize");
+    }
+
     public void enterTextInToEmailField(String email) {
         actionsWithElements.enterTextInToElement(emailAdress, email);
     }

@@ -47,4 +47,14 @@ public class ActionsWithElements {
             printErrorAndStopTest(e);
         }
     }
+
+    public void openPage(String url) {
+        try {
+            webDriver.get(url);
+            logger.info("page was opened");
+        } catch (Exception e) {
+            logger.error("page was not opened" + e);
+            Assert.fail("page was not opened" + e);
+        }
+    }
 }
