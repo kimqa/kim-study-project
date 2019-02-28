@@ -27,7 +27,6 @@ public class ActionsWithElements {
             printErrorAndStopTest(e);
         }
     }
-
     /**
      * show exception
      * @param e
@@ -36,7 +35,6 @@ public class ActionsWithElements {
         logger.error("Can not work with element" + e);
         Assert.fail("Can not work with element" + e);
     }
-
     /**
      * click on element and add log
      * @param element
