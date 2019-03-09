@@ -1,7 +1,6 @@
 package login;
 
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import parentTest.ParentTest;
 
 public class Login extends ParentTest {
@@ -19,14 +18,19 @@ public class Login extends ParentTest {
     public void noRegisteredUserLogin() {
         homePage.openHomePage();
         homePage.openLoginPage();
-        loginPage.login("invalidEmail", "pass");
+        loginPage.login("test@test", "pass");
+    }
+
+    @Test
+    public void invalidEmailAuth() {
+        homePage.openHomePage();
+        homePage.openLoginPage();
+        loginPage.login("invalid@mail.com", "123456");
     }
 
     @Test
     public void emptyFieldsLoginClick() {
         loginPage.openLoginPage();
-        loginPage.enterTextInToEmailField("");
-        loginPage.enterPass("");
-        loginPage.clickLoginButton();
+        loginPage.login("","");
     }
 }

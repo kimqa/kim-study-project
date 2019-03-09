@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,8 @@ public class LoginPage extends ParentPage {
     private WebElement password;
     @FindBy(xpath = ".//div[@class='btn-box']//button[@type ='submit']")
     private WebElement loginButton;
+    @FindBy(xpath = ".//*[@ng-click='showPassword = !showPassword']")
+    private WebElement showPasswordButton;
 
     @FindBy(xpath = ".//*[@class=''notification information']")
     private WebElement notification;
@@ -30,6 +33,7 @@ public class LoginPage extends ParentPage {
 
     public void enterPass(String pass) {
         actionsWithElements.enterTextInToElement(password, pass);
+        Assert.assertTrue("password is not as typed", actionsWithElements.getTextFromField(showPasswordButton) == pass);
     }
 
     public void clickLoginButton() {
@@ -42,4 +46,6 @@ public class LoginPage extends ParentPage {
         enterPass(pass);
         clickLoginButton();
     }
+
+
 }

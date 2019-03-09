@@ -57,4 +57,23 @@ public class ActionsWithElements {
             Assert.fail("page was not opened" + e);
         }
     }
+
+    public String getTextFromField(WebElement field) {
+        try{
+            logger.info("text " + field.getText() + " was taken from field");
+            return field.getText();
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+            return null;
+        }
+    }
+
+    public boolean checkCurrentUrl(String expectedURL){
+        try {
+            return webDriver.getCurrentUrl() == expectedURL;
+        } catch (Exception e) {
+            printErrorAndStopTest(e);
+            return false;
+        }
+    }
 }

@@ -20,5 +20,6 @@ public class HomePage extends ParentPage {
 
     public void openLoginPage() {
         actionsWithElements.clickOnElement(loginButton);
+        actionsWithElements.checkCurrentUrl("https://www.ssls.com/authorize");
     }
 }
