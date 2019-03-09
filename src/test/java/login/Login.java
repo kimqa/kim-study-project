@@ -8,9 +8,25 @@ public class Login extends ParentTest {
 
     @Test
     public void validLogin() {
-        loginPage.openLoginPage();
+        homePage.openHomePage();
+        homePage.openLoginPage();
         loginPage.enterTextInToEmailField("ssls.automation+5@gmail.com");
         loginPage.enterPass("123456");
+        loginPage.clickLoginButton();
+    }
+
+    @Test
+    public void noRegisteredUserLogin() {
+        homePage.openHomePage();
+        homePage.openLoginPage();
+        loginPage.login("invalidEmail", "pass");
+    }
+
+    @Test
+    public void emptyFieldsLoginClick() {
+        loginPage.openLoginPage();
+        loginPage.enterTextInToEmailField("");
+        loginPage.enterPass("");
         loginPage.clickLoginButton();
     }
 }
