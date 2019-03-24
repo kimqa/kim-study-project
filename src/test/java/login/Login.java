@@ -1,16 +1,17 @@
 package login;
 
+import libs.Utils;
 import org.junit.Test;
 import parentTest.ParentTest;
-
+import static libs.ConfigProperties.*;
 public class Login extends ParentTest {
 
     @Test
     public void validLogin() {
         homePage.openHomePage();
         homePage.openLoginPage();
-        loginPage.enterTextInToEmailField("ssls.automation+5@gmail.com");
-        loginPage.enterPass("123456");
+        loginPage.enterTextInToEmailField(LOGIN);
+        loginPage.enterPass(PASSWORD);
         loginPage.clickLoginButton();
     }
 
@@ -25,12 +26,20 @@ public class Login extends ParentTest {
     public void invalidEmailAuth() {
         homePage.openHomePage();
         homePage.openLoginPage();
-        loginPage.login("invalid@mail.com", "123456");
+        loginPage.login("invalid@mail.com", PASSWORD);
     }
 
     @Test
     public void emptyFieldsLoginClick() {
         loginPage.openLoginPage();
         loginPage.login("","");
+    }
+
+    @Test
+    public void logOut() {
+        loginPage.login(LOGIN, "123456");
+        Utils.waitABit(10);
+        homePage.expandProfileBox();
+        homePage.clickLogOut();
     }
 }

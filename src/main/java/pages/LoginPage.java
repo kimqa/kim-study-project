@@ -19,21 +19,26 @@ public class LoginPage extends ParentPage {
     private WebElement loginButton;
     @FindBy(xpath = ".//*[@ng-click='showPassword = !showPassword']")
     private WebElement showPasswordButton;
-
     @FindBy(xpath = ".//*[@class=''notification information']")
     private WebElement notification;
+    @FindBy(xpath = "//form[@name='authForm']")
+    private WebElement authForm;
+
+
 
     public void openLoginPage() {
-        actionsWithElements.openPage("https://www.ssls.com/authorize");
+        actionsWithElements.openPage(baseUrl + "/authorize");
     }
 
     public void enterTextInToEmailField(String email) {
+        actionsWithElements.waitUntilElementIsDisplayed(authForm);
         actionsWithElements.enterTextInToElement(emailAdress, email);
     }
 
     public void enterPass(String pass) {
+        actionsWithElements.waitUntilElementIsDisplayed(authForm);
         actionsWithElements.enterTextInToElement(password, pass);
-        Assert.assertTrue("password is not as typed", actionsWithElements.getTextFromField(showPasswordButton) == pass);
+//        Assert.assertTrue("password is not as typed", actionsWithElements.getTextFromField(showPasswordButton) == pass);
     }
 
     public void clickLoginButton() {

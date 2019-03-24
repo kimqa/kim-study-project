@@ -1,16 +1,24 @@
 package libs;
 
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithElements {
     WebDriver webDriver;
     Logger logger = Logger.getLogger(getClass());
+    WebDriverWait wait10, wait20;
+    ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
 
     public ActionsWithElements(WebDriver webDriver) {
         this.webDriver = webDriver;
+        logger = Logger.getLogger("ActionsWithElements");
+        wait10 = new WebDriverWait(webDriver,configProperties.TIME_FOR_DEFAULT_WAIT());
+        wait20 = new WebDriverWait(webDriver,configProperties.TIME_FOR_EXPLICIT_WAIT_LOW());
     }
 
     /**
@@ -74,6 +82,15 @@ public class ActionsWithElements {
         } catch (Exception e) {
             printErrorAndStopTest(e);
             return false;
+        }
+    }
+
+    public void waitUntilElementIsDisplayed(WebElement element) {
+        try{
+            wait10.until(ExpectedConditions.visibilityOf(element));
+            logger.info("Element " + element.toString() + " is visible");
+        } catch (Exception e) {
+            logger.error("can not work with element" + e);
         }
     }
 }

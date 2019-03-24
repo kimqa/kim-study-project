@@ -9,17 +9,30 @@ public class HomePage extends ParentPage {
 
     @FindBy(xpath = ".//*[@ui-sref='authorize.index']")
     private WebElement loginButton;
+    @FindBy(xpath = "//button[@nc-dropdown-trigger='statusOpened']")
+    private WebElement expandProfileBox;
+    @FindBy(xpath = "//button[@class='drop-button'][contains(text(),'Log out')]")
+    private WebElement logOutButton;
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
+
     }
 
     public void openHomePage() {
-        actionsWithElements.openPage("https://www.ssls.com");
+        actionsWithElements.openPage(baseUrl);
     }
 
     public void openLoginPage() {
         actionsWithElements.clickOnElement(loginButton);
-        actionsWithElements.checkCurrentUrl("https://www.ssls.com/authorize");
+        actionsWithElements.checkCurrentUrl(baseUrl + "/authorize");
+    }
+
+    public void expandProfileBox() {
+        actionsWithElements.clickOnElement(expandProfileBox);
+    }
+
+    public void clickLogOut() {
+        actionsWithElements.clickOnElement(logOutButton);
     }
 }
