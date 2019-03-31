@@ -1,5 +1,6 @@
 package parentTest;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,6 +17,7 @@ public class ParentTest {
     WebDriver webDriver;
     protected LoginPage loginPage;
     protected HomePage homePage;
+    Logger logger;
 
     @Before
     public void SetUp() {
@@ -35,5 +37,13 @@ public class ParentTest {
     }
     protected void checkExpectedResult(String message, boolean actualResult) {
         Assert.assertEquals(message, actualResult);
+    }
+
+
+    protected void checkAC(String message, boolean actual, boolean expected) {
+        if (!(actual == expected)) {
+//            logger.error("AC failed: " + message);
+        }
+        Assert.assertEquals(message, expected, actual);
     }
 }
