@@ -31,6 +31,7 @@ public class ParentTest {
 
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        myProfilePage = new MyProfilePage(webDriver);
     }
 
     @After
