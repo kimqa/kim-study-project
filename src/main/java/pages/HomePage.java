@@ -1,7 +1,5 @@
 package pages;
 
-import libs.ActionsWithElements;
-import libs.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +16,8 @@ public class HomePage extends ParentPage {
     private WebElement loginBoxEmail;
     @FindBy(xpath = "//form[@name='authForm']")
     private WebElement authForm;
+    @FindBy(xpath = "//a[@href='/user/profile']")
+    private WebElement viewProfileUrl;
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
@@ -44,5 +44,15 @@ public class HomePage extends ParentPage {
 
     public String emailInLoginBox() {
         return actionsWithElements.getTextFromField(loginBoxEmail);
+    }
+
+    public void openViewProfilePage() {
+        expandProfileBox();
+        clickViewProfile();
+    }
+
+    private void clickViewProfile() {
+        actionsWithElements.waitUntilElementIsDisplayed(viewProfileUrl);
+        actionsWithElements.clickOnElement(viewProfileUrl);
     }
 }

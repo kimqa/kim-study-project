@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyProfilePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,7 @@ public class ParentTest {
     WebDriver webDriver;
     protected LoginPage loginPage;
     protected HomePage homePage;
+    protected MyProfilePage myProfilePage;
     Logger logger;
 
     @Before
@@ -29,6 +31,7 @@ public class ParentTest {
 
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
+        myProfilePage = new MyProfilePage(webDriver);
     }
 
     @After
@@ -42,7 +45,7 @@ public class ParentTest {
 
     protected void checkAC(String message, boolean actual, boolean expected) {
         if (!(actual == expected)) {
-//            logger.error("AC failed: " + message);
+            logger.error("AC failed: " + message);
         }
         Assert.assertEquals(message, expected, actual);
     }
