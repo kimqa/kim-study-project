@@ -18,6 +18,16 @@
   </properties>
 
   <dependencies>
+
+
+    <!-- https://mvnrepository.com/artifact/com.applitools/eyes-selenium-java -->
+    <dependency>
+      <groupId>com.applitools</groupId>
+      <artifactId>eyes-selenium-java</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -41,11 +51,6 @@
           <artifactId>owner</artifactId>
           <version>1.0.4</version>
       </dependency>
-    <dependency>
-      <groupId>org.aeonbits.owner</groupId>
-      <artifactId>owner</artifactId>
-      <version>1.0.4</version>
-    </dependency>
       <dependency>
           <groupId>dom4j</groupId>
           <artifactId>dom4j</artifactId>

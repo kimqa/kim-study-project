@@ -1,5 +1,6 @@
 package pages;
 
+import com.applitools.eyes.Eyes;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

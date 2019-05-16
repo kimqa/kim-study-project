@@ -1,8 +1,10 @@
 package login;
 
+import com.applitools.eyes.Eyes;
 import org.junit.Test;
 import parentTest.ParentTest;
 import static libs.ConfigProperties.*;
+
 public class Login extends ParentTest {
 
     @Test
